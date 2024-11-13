@@ -8,14 +8,15 @@ use Hipcall\Resource\Calls;
 class HipcallClient
 {
     private $client;
-    private $baseUri = 'https://use.hipcall.com.tr/api/v3/';
+    private $baseUri;
     private $token;
     
     public $calls;
 
-    public function __construct($token)
+    public function __construct($token, $baseUri = 'https://use.hipcall.com.tr/api/v3/')
     {
         $this->token = $token;
+        $this->baseUri = $baseUri;
         $this->client = new Client([
             'base_uri' => $this->baseUri,
             'headers' => [

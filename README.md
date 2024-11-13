@@ -29,6 +29,21 @@ $response = $client->calls->get('6c64f58d-65fc-4415-8a3e-958f0cd05504', '2024-01
 print_r($response);
 ```
 
+If you use the different node, for example turkey, you should change the baseUri.
+For global node, you don't need to change it.
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+use Hipcall\HipcallClient;
+
+$token = 'API_TOKEN';
+$customBaseUri = 'https://use.hipcall.com.tr/api/v3/';
+$client = new HipcallClient($token, $customBaseUri);
+```
+
 ## Roadmap
 
 - [ ] Task
