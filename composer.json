@@ -1,0 +1,19 @@
+{
+    "name": "hipcall/hipcall_sdk",
+    "description": "Hipcall Official PHP SDK",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hipcall\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Onur Ozgur OZKAN",
+            "email": "onur.ozgur.ozkan@hipcall.com"
+        }
+    ]
+}
