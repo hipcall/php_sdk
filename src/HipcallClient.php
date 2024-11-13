@@ -3,13 +3,15 @@
 namespace Hipcall;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use Hipcall\Resource\Calls;
 
 class HipcallClient
 {
     private $client;
     private $baseUri = 'https://use.hipcall.com.tr/api/v3/';
     private $token;
+    
+    public $calls;
 
     public function __construct($token)
     {
@@ -21,27 +23,7 @@ class HipcallClient
                 'Accept' => 'application/json',
             ],
         ]);
-    }
 
-    public function getEndpoint($endpoint)
-    {
-        try {
-            $response = $this->client->get($endpoint);
-            return json_decode($response->getBody(), true);
-        } catch (RequestException $e) {
-            return $e->getResponse()->getBody()->getContents();
-        }
-    }
-
-    public function postEndpoint($endpoint, array $data)
-    {
-        try {
-            $response = $this->client->post($endpoint, [
-                'json' => $data,
-            ]);
-            return json_decode($response->getBody(), true);
-        } catch (RequestException $e) {
-            return $e->getResponse()->getBody()->getContents();
-        }
+        $this->calls = new Calls($this->client);
     }
 }

@@ -5,36 +5,34 @@ Official Hipcall API Wrapper written in PHP.
 ## Installation
 
 ```bash
-pip install hipcall/hipcall_sdk
+composer require hipcall/hipcall_sdk
 ```
+
 ## Use
 
 ```php
+<?php
+
 require 'vendor/autoload.php';
 
 use Hipcall\HipcallClient;
 
-$token = 'BARIER_TOKEN';
+$token = 'API_TOKEN';
 $client = new HipcallClient($token);
 
 // Get calls
-$response = $client->getEndpoint('calls?limit=5&offset=0');
+$response = $client->calls->list('limit=5&offset=0');
 print_r($response);
 
-// Call and Bridge
-$data = [
-    'callee_number' => '+905326202911',
-    'number_id' => 1,
-];
-
-$response = $client->postEndpoint('extensions/1234/call', $data);
+// Get a call
+$response = $client->calls->get('6c64f58d-65fc-4415-8a3e-958f0cd05504', '2024-01-01');
 print_r($response);
 ```
 
 ## Roadmap
 
 - [ ] Task
-- [ ] Phone system - call
+- [x] Phone system - call
 - [ ] Phone system - extensions
 - [ ] Phone system - greetings
 - [ ] Phone system - numbers
@@ -45,6 +43,7 @@ print_r($response);
 - [ ] Sales 
 - [ ] Account
 
+## Hipcall's Open Source Libraries
 
 All [Hipcall](https://www.hipcall.com/en-gb/) libraries:
 
@@ -52,7 +51,12 @@ All [Hipcall](https://www.hipcall.com/en-gb/) libraries:
 - [HipcallDeepgram](https://github.com/hipcall/hipcall_deepgram) - Unofficial Deepgram API Wrapper written in Elixir.
 - [HipcallOpenai](https://github.com/hipcall/hipcall_openai) - Unofficial OpenAI API Wrapper written in Elixir.
 - [HipcallWhichtech](https://github.com/hipcall/hipcall_whichtech) - Find out what the website is built with.
-- [HipcallSDk](https://github.com/hipcall/elixir_sdk) - Official Hipcall API Wrapper written in Elixir.
-- [HipcallPythonSdk](https://github.com/hipcall/python_sdk) - Official Hipcall API Wrapper written in Python.
+
+Hipcall's SDKs
+
+- [Hipcall Elixir SDK](https://github.com/hipcall/elixir_sdk) - Official Hipcall API Wrapper written in Elixir.
+- [Hipcall Python SDK](https://github.com/hipcall/python_sdk) - Official Hipcall API Wrapper written in Python.
+- [Hipcall PHP SDK](https://github.com/hipcall/php_sdk) - Official Hipcall API Wrapper written in PHP.
+- [Hipcall Ruby SDK](https://github.com/hipcall/ruby-sdk/) - Official Hipcall API Wrapper written in Ruby.
 
 
