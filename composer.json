@@ -1,19 +1,29 @@
 {
     "name": "hipcall/hipcall_sdk",
     "description": "Hipcall Official PHP SDK",
+    "keywords": [
+        "hipcall",
+        "api",
+        "sdk"
+    ],
+    "homepage": "https:\/\/www.hipcall.com\/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Onur Ozgur OZKAN",
+            "email": "onur.ozgur.ozkan@hipcall.com",
+        },
+        {
+            "name": "Hipcall Developer Team",
+            "homepage": "https:\/\/github.com\/hipcall\/php_sdk\/graphs\/contributors"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "^7.9"
     },
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Hipcall\\": "src/"
         }
-    },
-    "authors": [
-        {
-            "name": "Onur Ozgur OZKAN",
-            "email": "onur.ozgur.ozkan@hipcall.com"
-        }
-    ]
+    }
 }
