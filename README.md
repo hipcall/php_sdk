@@ -44,6 +44,61 @@ $customBaseUri = 'https://use.hipcall.com.tr/api/v3/';
 $client = new HipcallClient($token, $customBaseUri);
 ```
 
+### Calls
+
+```php
+// Get calls
+$response = $client->calls->list('limit=5&offset=0');
+print_r($response);
+
+// Get a call
+$response = $client->calls->get('6c64f58d-65fc-4415-8a3e-958f0cd05504', '2024-01-01');
+print_r($response);
+
+// Create a call card
+$id = '6c64f58d-65fc-4415-8a3e-958f0cd05504';
+$cardParams = [
+    [
+        'link' => 'https://my-crm.com',
+        'text' => 'My CRM',
+        'type' => 'title'
+    ],
+    [
+        'label' => 'Account ID',
+        'link' => 'https://my-crm.com/1234',
+        'text' => '1234',
+        'type' => 'shortText'
+    ],
+    [
+        'label' => 'Company name',
+        'text' => 'Acme Inc.',
+        'type' => 'shortText'
+    ],
+    [
+        'label' => 'Account Owner',
+        'type' => 'user',
+        'user_id' => 1234
+    ]
+];
+
+$response = $client->calls->createCard($id, $cardParams);
+print_r($response);
+
+// List call's comment
+$response = $client->calls->listComments('1bb91cdc-6649-456c-a46b-97c302010667');
+print_r($response);
+
+// Create a call comment
+$commentParams = [
+  'content' => 'New comment'
+];
+
+$response = $client->calls->createComment($id, $commentParams);
+print_r($response);
+```
+
+### Tasks
+
 ## Roadmap
 
 - [ ] Task
