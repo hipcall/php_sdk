@@ -47,11 +47,11 @@ $client = new HipcallClient($token, $customBaseUri);
 ### Calls
 
 ```php
-// Get calls
+// Call list
 $response = $client->calls->list('limit=5&offset=0');
 print_r($response);
 
-// Get a call
+// Call detail
 $response = $client->calls->get('6c64f58d-65fc-4415-8a3e-958f0cd05504', '2024-01-01');
 print_r($response);
 
@@ -84,7 +84,7 @@ $cardParams = [
 $response = $client->calls->createCard($id, $cardParams);
 print_r($response);
 
-// List call's comment
+// Call's comment list
 $response = $client->calls->listComments('1bb91cdc-6649-456c-a46b-97c302010667');
 print_r($response);
 
@@ -97,13 +97,55 @@ $response = $client->calls->createComment($id, $commentParams);
 print_r($response);
 ```
 
+### Extensions
+
+```php
+// Extensions list
+$response = $client->extensions->list('limit=5&offset=0');
+print_r($response);
+
+// Extension detail
+$response = $client->extensions->get('1');
+print_r($response);
+
+// Start a call and bridge to extension
+$callParams = [
+  "callee_number" => "+905325320000",
+  "number_id" => 327
+];
+
+$response = $client->extensions->createCall(1000, $callParams);
+print_r($response);
+```
+
+### Users
+
+```php
+// Users list
+$response = $client->users->list('limit=5&offset=0');
+print_r($response);
+
+// User detail
+$response = $client->users->get('1');
+print_r($response);
+
+// Start a call and bridge to user
+$callParams = [
+  "callee_number" => "+4440333",
+  "ring_user_first" => true
+];
+
+$response = $client->users->createCall(1000, $callParams);
+print_r($response);
+```
+
 ### Tasks
 
 ## Roadmap
 
-- [ ] Task
 - [x] Phone system - call
-- [ ] Phone system - extensions
+- [x] Phone system - extensions
+- [ ] Task
 - [ ] Phone system - greetings
 - [ ] Phone system - numbers
 - [ ] Phone system - teams
