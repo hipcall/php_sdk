@@ -4,6 +4,8 @@ namespace Hipcall;
 
 use GuzzleHttp\Client;
 use Hipcall\Resource\Calls;
+use Hipcall\Resource\Extensions;
+use Hipcall\Resource\Users;
 
 class HipcallClient
 {
@@ -12,6 +14,8 @@ class HipcallClient
     private $token;
     
     public $calls;
+    public $extensions;
+    public $users;
 
     public function __construct($token, $baseUri = 'https://use.hipcall.com.tr/api/v3/')
     {
@@ -26,5 +30,7 @@ class HipcallClient
         ]);
 
         $this->calls = new Calls($this->client);
+        $this->extensions = new Extensions($this->client);
+        $this->users = new Users($this->client);
     }
 }
