@@ -16,3 +16,9 @@ jobs:
       with:
         php_version: "8.3"
     - uses: php-actions/phpunit@v4
+      with:
+        version: 9.6
+        php_version: 8.3
+        bootstrap: vendor/autoload.php
+        configuration: test/phpunit.xml
+        args: --coverage-text
